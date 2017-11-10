@@ -1,0 +1,16 @@
+﻿@html.extend('layout',function(model){
+@html.block('body',function(model){
+@if (model.error){
+<p class="text-error">Error Occured : @model.error</p>
+}
+<h2> Users</h2>
+@model.categories.forEach(function(category){
+<div><a href="#">@category.name</a></div>
+})
+<br>
+<form action="/newUser" role="form" method="post" class="form-inline">
+    <input type="text" placeholder="username" name="userName" class="form-control"  />
+    <input type="submit" value="New User" class="btn btn-default"/>
+</form>
+})
+})
