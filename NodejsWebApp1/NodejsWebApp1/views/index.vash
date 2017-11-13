@@ -8,9 +8,24 @@
 <div><a href="#">@category.name</a></div>
 })
 <br>
+
+@if(model.newUserError)
+{
+<p class=""test-warning">@model.newUserError</p>
+}
 <form action="/newUser" role="form" method="post" class="form-inline">
+
+
     <input type="text" placeholder="username" name="userName" class="form-control"  />
+
+	<input type="email" placeholder="email" name="email" class="form-control"  />
+
+	<input type="name" placeholder="name" name="name" class="form-control"  />
+
     <input type="submit" value="New User" class="btn btn-default"/>
 </form>
+
+<br>
+
 })
 })

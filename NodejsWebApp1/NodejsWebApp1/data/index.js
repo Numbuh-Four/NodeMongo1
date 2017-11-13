@@ -8,7 +8,7 @@
             { next(err, null); }
             else
             {
-                db.users.find({ id: { $gt: 5} }).toArray(function (err, res) {
+                db.users.find({ id: { $gt: 2} }).toArray(function (err, res) {
                     if (err)
                     { next(err, null); }
                     else
@@ -34,7 +34,7 @@
     //    });
     //};
 
-    data.createNewUser = function (userName, next) {
+    data.createNewUser = function (userName,email, name, next) {
 
         database.getDB(function (err, db) {
             if (err)
@@ -49,16 +49,31 @@
                     else {
                         console.log(res.name);
 
-                        var user = {
-                            id: res.id + 1,
-                            name: userName,
-                            username: userName + "092",
-                            email: userName + "@karina.biz"
-                        };
-                        db.users.insert(user, function (err) {
-                            if (err) { next(err); }
-                            else { next(null); }
-                        });
+                        db.users.find({ username: userName }).count(function (err, count) {
+
+                            if (err)
+                            { next(err); }
+                            else {
+                                if (count != 0)
+                                { next("Username exists"); }
+                                else {
+                                    var user = {
+                                        id: res.id + 1,
+                                        name: name,
+                                        username: userName,
+                                        email: email
+                                    };
+
+                                    db.users.insert(user, function (err) {
+                                        if (err) { next(err); }
+                                        else { next(null); }
+                                    });
+
+                                }
+
+                            }
+                        });                      
+                        
                     }
                 });
             }

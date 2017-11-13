@@ -51,6 +51,8 @@
     <Folder Include="data\" />
     <Folder Include="public\" />
     <Folder Include="public\css\" />
+    <Folder Include="typings\globals\connect-flash\" />
+    <Folder Include="typings\globals\express-session\" />
     <Folder Include="views\" />
     <Folder Include="typings\" />
     <Folder Include="typings\globals\" />
@@ -59,6 +61,8 @@
     <Folder Include="views\ejs\" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="typings\globals\connect-flash\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\express-session\index.d.ts" />
     <TypeScriptCompile Include="typings\globals\node\index.d.ts" />
     <TypeScriptCompile Include="typings\globals\underscore\index.d.ts" />
     <TypeScriptCompile Include="typings\index.d.ts" />
