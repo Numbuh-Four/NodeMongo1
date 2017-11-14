@@ -33,9 +33,11 @@
     <Compile Include="controllers\homeController.js" />
     <Compile Include="controllers\index.js" />
     <Compile Include="controllers\testController.js" />
+    <Compile Include="controllers\userController.js" />
     <Compile Include="data\database.js" />
     <Compile Include="data\index.js" />
     <Compile Include="data\seedData.js" />
+    <Compile Include="data\seedDataTodo.js" />
     <Compile Include="server.js" />
     <Content Include=".bowerrc" />
     <Content Include="mongoServer.bat" />
@@ -45,6 +47,8 @@
     <Content Include="views\ejs\index.ejs" />
     <Content Include="views\index.vash" />
     <Content Include="views\layout.vash" />
+    <Content Include="views\tasks.vash" />
+    <Content Include="views\userDetail.vash" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="controllers\" />

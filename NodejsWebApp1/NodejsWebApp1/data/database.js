@@ -16,7 +16,8 @@
                 else {
                     theDB = {
                         db: db,
-                        users: db.collection("users")
+                        users: db.collection("users"),
+                        todo: db.collection("todo")
                     };
                     next(null, theDB);
                 }

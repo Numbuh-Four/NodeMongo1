@@ -1,0 +1,38 @@
+﻿@html.extend('layout',function(model){
+@html.block('body',function(model){
+@if (model.error){
+<p class="text-error">Error Occured : @model.error</p>
+}
+
+
+<div class="container" >
+<ul class="list-group">
+@model.tasks.forEach(function(task){
+
+@if (task.completed==true)
+{
+<li class="list-group-item">
+<div class="checkbox">
+<label><input type="checkbox" checked>@task.title</label>
+</div>
+</li>
+}
+else
+{
+<li class="list-group-item">
+<div class="checkbox">
+<label><input type="checkbox">@task.title</label>
+</div>
+</li>
+}
+
+})
+          </ul>
+</div>
+
+
+<br>
+<br>
+
+})
+})
