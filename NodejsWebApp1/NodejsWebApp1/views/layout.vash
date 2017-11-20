@@ -1,37 +1,38 @@
 ﻿<html>
 <head>
   <title>@model.title</title>
-  <link href="/css/site.css" rel="stylesheet"/>
+  
   <link href="/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
   <link href="/lib/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet"/>
+  <link href="/css/site.css" rel="stylesheet"/>
 </head>
   <body>
     <div>
       <nav class="navbar navbar-inverse">
           <div class="container-fluid">
               <div class="navbar-header">
-                  <a class="navbar-brand" href="#">The Board</a>
+                  <a class="navbar-brand" href="/">The Board</a>
+			@if(model.user){
+			<div>@model.user.uname</div>
+			}
                
           </div>
-              <ul class="nav navbar-nav">
-                  <li class="active">
-              <a href="#">Home</a>
+              <ul class="pull-right nav navbar-nav">
+                  <li>
+              <a href="/">Home</a>
             </li>
                   <li>
               <a href="/tasks">Tasks</a>
             </li>
                   <li>
-              <a href="#">Page 2</a>
+              <a href="/register">Register</a>
+            </li>
+			 <li>
+              <a href="/login">Login</a>
             </li>
                
           </ul>
-              <form class="navbar-form navbar-left">
-                  <div class="form-group">
-                      <input type="text" class="form-control" placeholder="Search">
-      </div>
-                  <button type="submit" class="btn btn-default">Submit</button>
-               
-          </form>
+             
            
         </div>
       </nav>
@@ -39,7 +40,7 @@
 
     <section id="body" class="container">
       <div class="page-header">
-        <h1>@model.title</h1>
+        <h2>@model.title</h2>
       </div>
 
       <div>@html.block("body")</div>
@@ -51,5 +52,7 @@
     <script src="/lib/jquery/jquery.min.js"></script>
     <script src="/lib/underscore/underscore.js"></script>
     <script src="/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="/lib/angular/angular.min.js"></script>
+	<script src="/lib/angular-bootstrap/ui-bootstrap.min.js"></script>
   </body>
 </html>

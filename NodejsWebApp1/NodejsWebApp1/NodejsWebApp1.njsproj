@@ -30,6 +30,8 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="auth\hashfile.js" />
+    <Compile Include="auth\index.js" />
     <Compile Include="controllers\homeController.js" />
     <Compile Include="controllers\index.js" />
     <Compile Include="controllers\testController.js" />
@@ -43,20 +45,29 @@
     <Content Include="mongoServer.bat" />
     <Content Include="package.json" />
     <Content Include="public\css\site.css" />
+    <Content Include="public\images\light-blue-sticky-note-md.png" />
+    <Content Include="public\images\post-it-note-green-md.png" />
     <Content Include="README.md" />
     <Content Include="views\ejs\index.ejs" />
     <Content Include="views\index.vash" />
     <Content Include="views\layout.vash" />
+    <Content Include="views\login.vash" />
+    <Content Include="views\notes.vash" />
+    <Content Include="views\register.vash" />
     <Content Include="views\tasks.vash" />
     <Content Include="views\userDetail.vash" />
+    <Content Include="views\userTasks.vash" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="controllers\" />
     <Folder Include="data\" />
+    <Folder Include="auth\" />
     <Folder Include="public\" />
     <Folder Include="public\css\" />
+    <Folder Include="public\images\" />
     <Folder Include="typings\globals\connect-flash\" />
     <Folder Include="typings\globals\express-session\" />
+    <Folder Include="typings\globals\passport\" />
     <Folder Include="views\" />
     <Folder Include="typings\" />
     <Folder Include="typings\globals\" />
@@ -68,6 +79,7 @@
     <TypeScriptCompile Include="typings\globals\connect-flash\index.d.ts" />
     <TypeScriptCompile Include="typings\globals\express-session\index.d.ts" />
     <TypeScriptCompile Include="typings\globals\node\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\passport\index.d.ts" />
     <TypeScriptCompile Include="typings\globals\underscore\index.d.ts" />
     <TypeScriptCompile Include="typings\index.d.ts" />
   </ItemGroup>

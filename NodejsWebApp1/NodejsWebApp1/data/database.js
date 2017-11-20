@@ -17,7 +17,8 @@
                     theDB = {
                         db: db,
                         users: db.collection("users"),
-                        todo: db.collection("todo")
+                        todo: db.collection("todo"),
+                        cred : db.collection("cred")
                     };
                     next(null, theDB);
                 }

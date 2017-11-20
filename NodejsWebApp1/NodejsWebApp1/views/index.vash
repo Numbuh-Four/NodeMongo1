@@ -29,8 +29,16 @@
 
     <input type="submit" value="New User" class="btn btn-default"/>
 </form>
-
 <br>
+<div>
+<ul class="list-group" style="width: 40%">  
+  @model.categories.forEach(function(category){
+  <li class="list-group-item justify-content-between">
+    <a href="/notes/@category.username">@category.name</a>
+  </li>
+  })
+</ul>
+</div>
 
 })
 })

@@ -12,7 +12,7 @@
             else
             {
                 //db.users.find({ id: { $gt: 2 } })
-                db.users.aggregate([{ $lookup: { from: "todo", localField: "id", foreignField: "userId", as: "tasks" } }]).toArray(function (err, res) {
+                db.users.aggregate([{ $lookup: { from: "todo", localField: "id", foreignField: "userId", as: "tasks" } }, { $sort: {"tasks.completed":1}}]).toArray(function (err, res) {
                     if (err)
                     { next(err, null); }
                     else
@@ -30,11 +30,50 @@
             if (err)
             { next(err, null); }
             else {
-                db.todo.find({}).toArray(function (err, res) {
+                db.todo.find({ id:101}).toArray(function (err, res) {
                     if (err)
                     { next(err, null); }
                     else
                     { next(null, res); }
+                });
+            }
+        });
+    };
+
+    //UpdateTasks
+    data.updateTask = function (tId,next) {
+        database.getDB(function (err, db) {
+            if (err)
+            { next(err, null); }
+            else {
+                db.todo.update({ id: tId }, { $set: { "completed": true } }, function (err, res)
+                {
+                    if (err)
+                    {
+                        console.log(err);
+                    }
+                    else
+                    {
+                        next(null);
+                    }
+                });
+            }
+        });
+    };
+
+    //delete Task(s)
+    data.deleteTask = function (tId, next) {
+        database.getDB(function (err, db) {
+            if (err)
+            { next(err, null); }
+            else {
+                db.todo.deleteOne({ id: tId }, function (err, res) {
+                    if (err) {
+                        console.log(err);
+                    }
+                    else {
+                        next(null);
+                    }
                 });
             }
         });
@@ -151,6 +190,29 @@
        
     };
 
+    data.addCredentials = function (userAuth, next) {
+        database.getDB(function (err, db) {
+            if (err)
+            { console.log("failed to seed database auth"); }
+            else {
+                db.cred.insert(userAuth, next);
+            }
+            }
+            );
+    };
+
+    data.getCredentials = function (username, next) {
+
+        database.getDB(function (err, db) {
+            if (err)
+            { console.log("failed to seed database auth"); }
+            else {
+                db.cred.findOne({ "uname": username}, next);
+            }
+        }
+        );
+    };
+
     //Seed DB
     function seedDatabase()
     {
@@ -204,6 +266,33 @@
                         { console.log("todo DB already seeded"); }
                     }
                 })
+
+
+                //user Auth
+                db.cred.count(function (err, count) {
+                    if (err) {
+                        console.log("Count returned error : " + err);
+                    }
+                    else {
+                        if (count == 0) {
+                            { console.log("Seeding todo DB...."); }
+                            db.cred.insert(
+                                {
+                                    "uname": "user1",
+                                    "email": "test@req.body.email",
+                                    "passwordHash": "hasher.computeHash(req.body.password, salt)",
+                                    "salt": "salt"
+                                }
+                                , function (err) {
+                                    if (err) { console.log("error inserting item." + err); }
+                                });
+
+                            console.log("DB seeding finished.");
+                        }
+                        else
+                        { console.log("todo DB already seeded"); }
+                    }
+                });
             }
         });
     }

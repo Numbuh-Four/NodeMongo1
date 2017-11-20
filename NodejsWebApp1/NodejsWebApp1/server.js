@@ -18,7 +18,10 @@ app.use(cookieParser());
 app.use(flash());
 
 app.set("view engine", "vash");
-app.use(express.static(__dirname + "/public"));         
+app.use(express.static(__dirname + "/public"));    
+
+var auth = require("./auth");
+auth.init(app);
 controllers.init(app);
 
 

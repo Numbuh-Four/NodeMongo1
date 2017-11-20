@@ -6,7 +6,7 @@
 
 
 <div class="container" >
-<ul class="list-group">
+<ul class="list-group" style="width: 60%">
 @model.tasks.forEach(function(task){
 
 @if (task.completed==true)
@@ -14,7 +14,13 @@
 <li class="list-group-item">
 <div class="checkbox">
 <label><input type="checkbox" checked>@task.title</label>
+<span class="pull-right">
+                            <button class="btn btn-sm btn-danger" type="button"
+                                    data-toggle="tooltip"
+                                    data-original-title="Remove this task"><i class="glyphicon glyphicon-remove"></i></button>
+                        </span>
 </div>
+
 </li>
 }
 else
@@ -22,6 +28,11 @@ else
 <li class="list-group-item">
 <div class="checkbox">
 <label><input type="checkbox">@task.title</label>
+<span class="pull-right">
+                            <button class="btn btn-sm btn-success" type="button"
+                                    data-toggle="tooltip"
+                                    data-original-title="Complete this task"><i class="glyphicon glyphicon-check"></i></button>
+                        </span>
 </div>
 </li>
 }

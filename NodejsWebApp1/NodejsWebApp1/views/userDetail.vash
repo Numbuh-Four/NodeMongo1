@@ -55,14 +55,14 @@
                                 data-toggle="tooltip"
                                 data-original-title="Send message to user"><i class="glyphicon glyphicon-envelope"></i></button>
                         <span class="pull-right">
-                            <button class="btn btn-sm btn-warning" type="button"
-                                    data-toggle="tooltip"
-                                    data-original-title="Edit this user"><i class="glyphicon glyphicon-edit"></i></button>
-                            <button class="btn btn-sm btn-danger" type="button"
-                                    data-toggle="tooltip"
-                                    data-original-title="Remove this user"><i class="glyphicon glyphicon-remove"></i></button>
-                        </span>
-                    </div>
-                </div>
+
+
+	<form action="/" method="get" >
+	<button class="btn btn-sm btn-warning" type="submit" data-toggle="tooltip"  data-original-title="Get Tasks" formaction="/Tasks/@model.user.username"><i class="glyphicon glyphicon-list-alt"></i></button>
+	<button class="btn btn-sm btn-warning" type="submit" data-toggle="tooltip"  data-original-title="Remove this user" formaction="/"><i class="glyphicon glyphicon-remove"></i></button>
+    </form>
+	</span>
+    </div>
+    </div>
 })
 })
